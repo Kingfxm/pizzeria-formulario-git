@@ -1,0 +1,59 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-image: url(../img/bannerpizza.jpg);
+  background-repeat: round;
+}
+
+.bg-darkgray {
+  background-color: rgb(32, 32, 32);
+}
+
+.eye {
+  width: 20px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+}
+
+.cart {
+  width: 20px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  fill: white;
+}
+
+.cartnav {
+  width: 25px;
+  padding-bottom: 2px;
+  padding-right: 7px;
+  fill: white;
+}
+
+.pizza {
+  width: 25px;
+  padding-bottom: 5px;
+  padding-right: 7px;
+  fill: white;
+}
+
+.userlock{
+  width: 25px;
+  padding-bottom: 5px;
+  padding-right: 7px;
+  fill: white;
+}
+
+.inputs{
+  margin-bottom: 15px;
+}
+
+.formicons{
+  width: 37px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  fill: black;
+}
