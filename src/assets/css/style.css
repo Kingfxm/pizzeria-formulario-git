@@ -57,3 +57,21 @@ body {
   padding-right: 10px;
   fill: black;
 }
+
+.ingredientes-lista {
+  list-style: none;
+  padding: 0px;
+  display: inline;
+}
+
+.ingredientes-lista li {
+  display: inline;
+}
+
+.ingredientes-lista li::after {
+  content: ", ";
+}
+
+.ingredientes-lista li:last-child::after {
+  content: "";
+}
