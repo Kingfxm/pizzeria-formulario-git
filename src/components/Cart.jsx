@@ -1,8 +1,13 @@
 import React from 'react'
+import Header from './Header'
 
 const Cart = ({showCart, cart, deleteCart, addCant, sustCant}) => {
-    const total = cart.reduce((acc,pizza) => acc + pizza.price * pizza.cant, 0)
   return (
+    <>
+    <Header 
+            title="¡Pizzería Mamma Mía!"
+            descripcion="¡Tenemos las mejores pizzas que podrás encontrar!" 
+        />
     <div>
       <h1 className='pt-4 pb-4 mt-4'>Carrito</h1>
       {cart.length === 0 ? (<p>No hay pizzas en el carrito</p>) : (cart.map((pizza) => 
@@ -17,7 +22,7 @@ const Cart = ({showCart, cart, deleteCart, addCant, sustCant}) => {
                 <h2 className="card-title text-start">{pizza.name}</h2>
                 <p className="card-text text-start">{pizza.desc}</p>
               <div className='d-inline d-flex'>
-                <p className="card-text text-start ">Ingredientes:</p>
+                <p className="card-text text-start ">Ingredientes:&nbsp;</p>
                 <ul className='ingredientes-lista'>{(pizza.ingredients).map((ingredient, index) =>
                 <li key={index}>{(ingredient)}</li>)}
                 </ul>
@@ -40,6 +45,7 @@ const Cart = ({showCart, cart, deleteCart, addCant, sustCant}) => {
         <button className='btn btn-dark btn-lg' onClick={showCart}>Volver a la página principal</button>
         <p></p>
     </div>
+  </>
   )
 }
 
