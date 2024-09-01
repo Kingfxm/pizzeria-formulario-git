@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./Header";
-import CardPizza from "./CardPizza";
+import Header from "../components/Header";
+import CardPizza from "../components/CardPizza";
 import { useState, useEffect } from "react";
 // import { pizzas } from "../data/pizzas";
 
@@ -23,7 +23,7 @@ const Home = ({showHome, addCart}) => {
             title="¡Pizzería Mamma Mía!"
             descripcion="¡Tenemos las mejores pizzas que podrás encontrar!" 
         />
-        
+        <h1 className="mt-4">Pizzas</h1>
         <div className='container mt-3'>
             <div className='row' >
             {pizzas.map((pizza, index)=>(

@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../components/Header'
 import { useState, useEffect } from 'react'
 
 const Pizza = () => {
@@ -14,8 +15,14 @@ const Pizza = () => {
     },[])
 
   return (
+    <>
+    <Header 
+            title="¡Pizzería Mamma Mía!"
+            descripcion="¡Tenemos las mejores pizzas que podrás encontrar!" 
+        />
+    
     <div>
-      <div className="card mb-3 mt-4" key={pizza.id}>
+      <div className="card mb-3 mt-4 mx-4" key={pizza.id}>
           <div className="row g-0">
             <div className="col-md-4">
               <img src={pizza.img} className="img-fluid rounded-start" alt={pizza.name}/>
@@ -30,12 +37,13 @@ const Pizza = () => {
                   <li key={index}>{(ingredient)}</li>)}
                   </ul>
                 </div>
-            <h5 className='text-start'>Precio: ${((pizza.price).toLocaleString("de"))}</h5>
+            <h5 className='text-start'>Precio: ${((pizza.price)?.toLocaleString("de"))}</h5>
             </div>
             </div>
             </div>
             </div>
     </div>
+  </>
   )
 }
 

@@ -1,7 +1,8 @@
 import React from 'react'
-import Header from './Header'
+import Header from '../components/Header'
+import { Link } from 'react-router-dom'
 
-const Cart = ({showCart, cart, deleteCart, addCant, sustCant}) => {
+const Cart = ({cart, deleteCart, addCant, sustCant}) => {
   return (
     <>
     <Header 
@@ -9,7 +10,7 @@ const Cart = ({showCart, cart, deleteCart, addCant, sustCant}) => {
             descripcion="¡Tenemos las mejores pizzas que podrás encontrar!" 
         />
     <div>
-      <h1 className='pt-4 pb-4 mt-4'>Carrito</h1>
+      <h1 className='pt-3 pb-4 mt-3'>Carrito</h1>
       {cart.length === 0 ? (<p>No hay pizzas en el carrito</p>) : (cart.map((pizza) => 
       <div>
         <div className="card mb-3" key={pizza.id}>
@@ -41,9 +42,8 @@ const Cart = ({showCart, cart, deleteCart, addCant, sustCant}) => {
           </div>
         ))}
           <h2 className='text-end' style={{display:cart.length === 0 ? "none" : ""}}>Total a pagar: ${((cart.reduce((acc,pizza) => acc + pizza.price * pizza.cant, 0))).toLocaleString('de')}
-          <button className='btn btn-primary btn-lg ms-4 mb-1'>Ir a Pagar</button></h2>
-        <button className='btn btn-dark btn-lg' onClick={showCart}>Volver a la página principal</button>
-        <p></p>
+          <Link to="/cart" className='btn btn-primary btn-lg ms-4 mb-1'>Ir a Pagar</Link></h2>
+          <Link to="/" className='btn btn-dark btn-lg mb-4'>Volver a la página principal</Link>
     </div>
   </>
   )
