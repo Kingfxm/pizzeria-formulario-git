@@ -1,17 +1,13 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../context/CartContext'
 
-function CardPizza({pizza, showHome, addCart}) {
-  const [descripcion, showDesc] = useState(false)
-  const verMas = () => {
-    showDesc(true)
-  }
-  const verMenos = () => {
-    showDesc(false)
-  }
 
-  
+function CardPizza({pizza}) {
+
+  const {addCart} = useContext(CartContext)
+
   return (
     <>
     <div className='card my-3 mx-1 px-0 py-0'>
@@ -20,8 +16,6 @@ function CardPizza({pizza, showHome, addCart}) {
         <h5 className='card-title text-uppercase pt-2'>{pizza.name}</h5>
       </div>
       <div className='card-body'>
-        {/*<h5>{descripcion ? "Descripción" : ""}</h5>
-        <p>{descripcion ? (pizza.desc) : ""}</p>*/}
         <h5>Ingredientes:</h5>
         <ul className='ingredientes-lista'>{(pizza.ingredients).map((ingredient, index) =>
           <li key={index}>{(ingredient)}</li>)}

@@ -1,12 +1,11 @@
 import React from 'react'
 import Header from '../components/Header'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState,useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
-const Cart2 = ({cart, sustCant, addCant, deleteCart}) => {
-const [envio,setEnvio] = useState(0)
-const totalitems = cart?.reduce((acc,pizza) => acc + pizza.cant, 0)
-const total = cart?.reduce((acc,pizza) => acc + pizza.price * pizza.cant, 0)
+const Cart2 = () => {
+  const {cart,addCant,sustCant,deleteCart,envio,setEnvio,totalitems,total} = useContext(CartContext)
 
   return (
     <>
@@ -37,10 +36,10 @@ const total = cart?.reduce((acc,pizza) => acc + pizza.price * pizza.cant, 0)
                           <div className="col-md-2 col-lg-2 col-xl-2">
                             <img
                               src={pizza.img}
-                              className="img-fluid rounded-3" alt="Cotton T-shirt"></img>
+                              className="img-fluid rounded-3" alt={pizza.name}></img>
                           </div>
                           <div className="col-md-3 col-lg-3 col-xl-3">
-                            <h6 className="fs-5 text-muted">{pizza.name}</h6>
+                            <h6 className="fs-5 text-muted text-uppercase">{pizza.name}</h6>
                             
                           </div>
                           <div className="col-md-3 col-lg-3 col-xl-3">

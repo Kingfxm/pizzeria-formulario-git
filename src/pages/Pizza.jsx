@@ -1,18 +1,10 @@
 import React from 'react'
 import Header from '../components/Header'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { PizzaContext } from '../context/PizzaContext'
 
 const Pizza = () => {
-    const [pizza, setPizza] = useState([])
-    const getData = async() => {
-        const respuesta = await fetch("http://localhost:5000/api/pizzas/p001")
-        const data = await respuesta.json()
-        setPizza(data)
-    }
-
-    useEffect(()=>{
-        getData()
-    },[])
+const {pizza} = useContext(PizzaContext)
 
   return (
     <>
@@ -29,7 +21,7 @@ const Pizza = () => {
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                <h2 className="card-title text-start">{pizza.name}</h2>
+                <h2 className="card-title text-start text-uppercase">{pizza.name}</h2>
                 <p className="card-text text-start">{pizza.desc}</p>
                 <div className='d-inline d-flex'>
                   <p className="card-text text-start ">Ingredientes:&nbsp;</p>

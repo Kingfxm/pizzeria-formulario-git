@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const Navbar = ({cart}) => {
-    const total = cart?.reduce((acc,pizza) => acc + pizza.price * pizza.cant, 0)
-    const token = true;
-    const totalformat = total?.toLocaleString('de');
-    
+const Navbar = () => {
+  const token = true;
+  const {cart,totalformat} = useContext(CartContext)
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark text-white bg-darkgray fixed-top">
             <div className="container">
