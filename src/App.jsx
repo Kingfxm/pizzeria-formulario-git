@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { ReactDOM } from 'react'
 import { useEffect } from 'react'
-import { Route, Routes } from 'react-router'
+import { Route, Routes, Navigate } from 'react-router'
 import './App.css'
 import './assets/css/style.css'
 import Home from './pages/Home'
@@ -15,6 +15,7 @@ import Pizza from './pages/Pizza'
 import Profile from './pages/Profile'
 import NotFound from './pages/NotFound'
 import Cart2 from './pages/Cart2'
+import { UserContext } from './context/UserContext'
 
 function App() {
   {/* const [show, setShow] = useState(true)
@@ -25,17 +26,17 @@ function App() {
   const showCart = () => {
     setShow(true)
   } */}
-
+  const {user} = useContext(UserContext)
   return <>
 
     <Navbar /> 
     <Routes>
       <Route path='/' element={<Home />}></Route>
       <Route path='/cart' element={<Cart2 />}></Route>
-      <Route path='/register' element={<Register />}></Route>
-      <Route path='/login' element={<Login />}></Route>
-      <Route path='/profile' element={<Profile />}></Route>
-      <Route path='/pizza/p001' element={<Pizza />}></Route>
+      <Route path='/register' element={user ? <Navigate to='/' /> : <Register />}></Route>
+      <Route path='/login' element={user ? <Navigate to='/' /> : <Login />}></Route>
+      <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />}></Route>
+      <Route path='/pizza/:id' element={<Pizza />}></Route>
       <Route path='/*' element={<NotFound />}></Route>
     </Routes>
     

@@ -3,8 +3,10 @@ import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 import { useState,useContext } from 'react'
 import { CartContext } from '../context/CartContext'
+import { UserContext } from '../context/UserContext'
 
 const Cart2 = () => {
+  const {user} = useContext(UserContext)
   const {cart,addCant,sustCant,deleteCart,envio,setEnvio,totalitems,total} = useContext(CartContext)
 
   return (
@@ -107,7 +109,8 @@ const Cart2 = () => {
                           <h5>$ {((total+envio)).toLocaleString("de")}</h5>
                         </div>
         
-                        <button  type="button" className="btn btn-secondary btn-block btn-lg">Ir a pagar</button>
+                        <button  type="button" className={user ? "btn btn-secondary btn-block btn-lg" : "btn btn-secondary btn-block btn-lg disabled" }>Ir a pagar</button>
+                        <p className='pt-2' style={{display:user ? "none" : ""}}>Debes iniciar sesión</p>
         
                       </div>
                     </div>

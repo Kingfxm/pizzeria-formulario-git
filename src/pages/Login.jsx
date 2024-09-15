@@ -1,25 +1,28 @@
 import React from 'react'
 import { useState } from 'react'
 import Header from '../components/Header'
-
-
+import { useContext } from 'react'
+import { UserContext } from '../context/UserContext'
+import { Link } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const Login = () => {
-
+const {user, setUser} = useContext(UserContext)
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 
 
 
-const validar = () => {
-
-    if (!email || !password){
-        alert("Debe llenar todos los campos")
-    }
-    else if (password.length < 6){
-        alert("La contraseña debe tener al menos 6 carácteres")
-    }
-    else alert("¡Login exitoso!")
+const validar = (event) => {
+  event.preventDefault()
+  if (!email || !password){
+    alert("Debe llenar todos los campos")
+  }
+  else if (password.length < 6){
+    alert("La contraseña debe tener al menos 6 carácteres")
+  }
+  else {alert("¡Login exitoso!")
+  setUser(true)}
 }
 
 

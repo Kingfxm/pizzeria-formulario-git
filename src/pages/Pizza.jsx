@@ -1,10 +1,23 @@
 import React from 'react'
 import Header from '../components/Header'
 import { useState, useEffect, useContext } from 'react'
-import { PizzaContext } from '../context/PizzaContext'
+// import { PizzaContext } from '../context/PizzaContext'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Pizza = () => {
-const {pizza} = useContext(PizzaContext)
+// const {pizza} = useContext(PizzaContext)
+const {id} = useParams()
+const [pizza, setPizza] = useState({})
+const getData = async() => {
+  const response = await fetch(`http://localhost:5000/api/pizzas/${id}`)
+  const data = await response.json()
+  setPizza(data)
+}
+
+useEffect(()=>{
+  getData()
+},[])
 
   return (
     <>
@@ -34,6 +47,8 @@ const {pizza} = useContext(PizzaContext)
             </div>
             </div>
             </div>
+            <Link to="/" className='btn btn-secondary btn-lg mb-4'>Volver a la página principal</Link>
+            
     </div>
   </>
   )
