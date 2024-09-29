@@ -1,6 +1,4 @@
 import React from 'react'
-import banner from '../assets/img/bannerpizza.jpg'
-
 
 function Header({title, descripcion}) {
   return (

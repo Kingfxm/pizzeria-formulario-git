@@ -5,6 +5,20 @@ export const CartContext = createContext()
 
 const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
+    const checkout = async(e) => {
+      e ? e.preventDefault() : ""
+      const token = localStorage.getItem("token")
+      const response = await fetch("http://localhost:5000/api/checkouts", {
+        method:"POST",
+        headers:{"Content-Type" : "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({cart : cart})
+      })
+      const data = await response.json()
+      localStorage.setItem("cart", JSON.stringify(cart))
+      alert("¡Se ha completado la compra!")
+    }
     
     const addCart = (pizza) => {
         const itemCart = cart?.find(item => item.id === pizza.id)
@@ -41,7 +55,7 @@ const CartProvider = ({children}) => {
       const totalformat = total?.toLocaleString('de');
 
   return (
-    <CartContext.Provider value = {{cart,addCant,addCart,sustCant,deleteCart,envio,setEnvio,totalitems,total,totalformat}} >
+    <CartContext.Provider value = {{cart,addCant,addCart,sustCant,deleteCart,envio,setEnvio,totalitems,total,totalformat,checkout}} >
         {children}
     </CartContext.Provider>
   )

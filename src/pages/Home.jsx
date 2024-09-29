@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Header from "../components/Header";
 import CardPizza from "../components/CardPizza";
-import { useState, useEffect } from "react";
 import {PizzasContext} from "../context/PizzasContext";
 
 

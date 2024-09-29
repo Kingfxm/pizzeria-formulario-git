@@ -1,12 +1,10 @@
 import React from 'react'
 import Header from '../components/Header'
 import { useState, useEffect, useContext } from 'react'
-// import { PizzaContext } from '../context/PizzaContext'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 const Pizza = () => {
-// const {pizza} = useContext(PizzaContext)
 const {id} = useParams()
 const [pizza, setPizza] = useState({})
 const getData = async() => {

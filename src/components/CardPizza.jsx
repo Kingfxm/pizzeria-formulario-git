@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState,useContext } from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
+import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
 
 
